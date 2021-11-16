@@ -10,9 +10,8 @@
 % 
 % [results,means,stats,results1,means1,stats1] = DataANOVA(Serious_Threat_Sex0,Serious_Threat_Sex1);
 
-
-mat3 = rand(20);
-alpha = 0.05;
+mat1 = zeros(3);
+mat2 = ones(10);
 
 % fprintf("test\n");
 % type learningVarargin
@@ -20,7 +19,7 @@ alpha = 0.05;
 % 
 
 % [is_parametric_mat] = check_parametric(mat1, mat2);
-[is_parametric_mat] = chk_parametric(mat3, alpha)
+[is_parametric_mat] = chk_parametric(mat1);
 
+[H, pValue, W] = swtest(mat, .05)
 
-% [H, pValue, W] = swtest(mat3(1,:), .05);

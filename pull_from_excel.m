@@ -15,7 +15,7 @@ while i < rows+1
     j = 1;
   while j <  cols+1
       list_Serious_Threat_Sex0 = [list_Serious_Threat_Sex0, Serious_Threat_Sex0(i, j)];
-      disp(size(list_Serious_Threat_Sex0));
+      % disp(size(list_Serious_Threat_Sex0));
       j= j+1;
   end
   i= i+1;
@@ -25,4 +25,4 @@ end
 list_Serious_Threat_Sex0 = list_Serious_Threat_Sex0(~isnan(list_Serious_Threat_Sex0));
 
 
-[results,means,stats,results1,means1,stats1] = DataANOVA(Serious_Threat_Sex0,Serious_Threat_Sex1);
+% [results,means,stats,results1,means1,stats1] = DataANOVA(Serious_Threat_Sex0,Serious_Threat_Sex1);
