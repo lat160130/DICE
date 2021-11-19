@@ -1,3 +1,7 @@
+clc;
+clear;
+close all;
+
 xlsx_name = 'COVID_Questions_Plots_Sex_and_Lone.xlsx';
 Serious_Threat = readmatrix(xlsx_name,'Sheet','Serious Threat','Range','B2:L84');
 

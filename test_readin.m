@@ -14,13 +14,9 @@
 mat3 = rand(20);
 alpha = 0.05;
 
-% fprintf("test\n");
-% type learningVarargin
-% learningVarargin ('extra argument', mat1, mat2)
-% 
 
 % [is_parametric_mat] = check_parametric(mat1, mat2);
-[is_parametric_mat] = chk_parametric(mat3, alpha)
+% [is_parametric_mat] = chk_parametric(mat3, alpha);
 
 
 % [H, pValue, W] = swtest(mat3(1,:), .05);

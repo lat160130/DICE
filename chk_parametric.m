@@ -18,6 +18,7 @@ end
 % data - read in a matrix.  Each column MUST be an independent dataset.
 % 0 entry in the matrix means the condition was met.  
 % 1 means the condition was not met.
+% alpha - scalar
 % ========================================================================= Input Variable
 
 % == Output Matrix ======================================================== Output Matrix
