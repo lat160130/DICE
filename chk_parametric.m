@@ -4,16 +4,22 @@ function [is_parametric_mat] = chk_parametric(data, alpha)
 % ========================================================================= Goal
 
 % == Input Validation ===================================================== Input Validation
+
+if alpha <= 0 || alpha >= 1
+    error('Your alpha is less than or equal to zero, or greater than or equal to one.');
+end % if alpha <= 0 || alpha >= 1
+
 if sum(isnan(data), 'all') > 0
     error('There are NaNs in your matrix.');
+end % if sum(isnan(data), 'all') > 0
 
 if size(data,1) < 20
     warning('A Shapiro Wilk test is used here to check for normality. You have less than 20 data points. Proceed with extreme caution.');
-end
+end % if size(data,1) < 20
 
 if size(data,1) < 5
     error('A Shapiro Wilk test is used here to check for normality. You have less than 5 data points. Do not Proceed.');
-end
+end % if size(data,1) < 5
 
 % ========================================================================= Input Validation
 
