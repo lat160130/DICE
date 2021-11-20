@@ -10,7 +10,7 @@ if alpha <= 0 || alpha >= 1
 end % if alpha <= 0 || alpha >= 1
 
 if sum(isnan(data), 'all') > 0
-    error('There are NaNs in your matrix.');
+    warning('There are NaNs in your matrix.');
 end % if sum(isnan(data), 'all') > 0
 
 if size(data,1) < 20
