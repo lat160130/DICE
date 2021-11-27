@@ -10,6 +10,8 @@ if alpha <= 0 || alpha >= 1
 end % if alpha <= 0 || alpha >= 1
 
 if sum(isnan(data), 'all') > 0
+    num_NaN = sum(isnan(data), 'all');
+    fprintf("There are %d NaNs in your data set.\n", num_NaN);
     warning('There are NaNs in your matrix.');
 end % if sum(isnan(data), 'all') > 0
 
