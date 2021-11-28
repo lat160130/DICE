@@ -183,28 +183,36 @@ bang_alone_param_check = chk_parametric([bang_alone,bang_two_more], alpha);
 
 
 % == mod_alc_consump_le_mo ================================================ mod_alc_consump_le_mo
-mod_alc_param_check       = chk_parametric(mod_alc_consump_le_mo(2:4,:)',alpha);
-mod_alc_sex_param_check   = chk_parametric(mod_alc_consump_le_mo(9:14,:)',alpha);
-mod_alc_alone_param_check = chk_parametric(mod_alc_consump_le_mo(19:24,:)',alpha);
-% all are non parametric
+mod_alc_param_check_sex   = chk_parametric(mod_alc_consump_le_mo(9:14,:)', alpha);
+mod_alc_param_check_alone = chk_parametric(mod_alc_consump_le_mo(19:24,:)', alpha);
+% both parametric
 
-% run kruskal wallis tests
-mod_alc_p       = kruskalwallis(mod_alc_consump_le_mo(2:4,:)');
-mod_alc_sex_p   = kruskalwallis(mod_alc_consump_le_mo(9:14,:)');
-mod_alc_alone_p = kruskalwallis(mod_alc_consump_le_mo(19:24,:)');
-close all;
+mod_alc_consump_reg = fitlm(mod_alc_consump_le_mo(1,:), mod_alc_consump_le_mo(2,:)./mod_alc_consump_le_mo(5,:), 'linear');
+
+[mod_alc_consump_sex_no_p,       mod_alc_consump_sex_no_h]       = ranksum(mod_alc_consump_le_mo(9,:), mod_alc_consump_le_mo(10,:));
+[mod_alc_consump_sex_yes_more_p, mod_alc_consump_sex_yes_more_h] = ranksum(mod_alc_consump_le_mo(11,:), mod_alc_consump_le_mo(12,:));
+[mod_alc_consump_sex_yes_less_p, mod_alc_consump_sex_yes_less_h] = ranksum(mod_alc_consump_le_mo(13,:), mod_alc_consump_le_mo(14,:));
+
+[mod_alc_consump_alone_no_p,       mod_alc_consump_alone_no_h]       = ranksum(mod_alc_consump_le_mo(19,:), mod_alc_consump_le_mo(20,:));
+[mod_alc_consump_alone_yes_more_p, mod_alc_consump_alone_yes_more_h] = ranksum(mod_alc_consump_le_mo(21,:), mod_alc_consump_le_mo(22,:));
+[mod_alc_consump_alone_yes_less_p, mod_alc_consump_alone_yes_less_h] = ranksum(mod_alc_consump_le_mo(23,:), mod_alc_consump_le_mo(24,:));
 % ========================================================================= mod_alc_consump_le_mo
 
 % == mod_stim_consump_le_mo =============================================== mod_stim_consump_le_mo
-mod_stim_param_check       = chk_parametric(mod_stim_consump_le_mo(2:4,:)',alpha);
+
 mod_stim_sex_param_check   = chk_parametric(mod_stim_consump_le_mo(9:14,:)',alpha);
 mod_stim_alone_param_check = chk_parametric(mod_stim_consump_le_mo(19:24,:)',alpha);
-% all are non parametric
+% % all are non parametric
 
-% run kruskal wallis tests
-mod_stim_p       = kruskalwallis(mod_stim_consump_le_mo(2:4,:)');
-mod_stim_sex_p   = kruskalwallis(mod_stim_consump_le_mo(9:14,:)');
-mod_stim_alone_p = kruskalwallis(mod_stim_consump_le_mo(19:24,:)');
+mod_stim_reg = fitlm(mod_stim_consump_le_mo(1,:), mod_stim_consump_le_mo(2,:)./mod_stim_consump_le_mo(5,:), 'linear');
+
+[mod_stim_consump_sex_no_p,       mod_stim_consump_sex_no_h]       = ranksum(mod_stim_consump_le_mo(9,:),  mod_stim_consump_le_mo(10,:));
+[mod_stim_consump_sex_yes_more_p, mod_stim_consump_sex_yes_more_h] = ranksum(mod_stim_consump_le_mo(11,:), mod_stim_consump_le_mo(12,:));
+[mod_stim_consump_sex_yes_less_p, mod_stim_consump_sex_yes_less_h] = ranksum(mod_stim_consump_le_mo(13,:), mod_stim_consump_le_mo(14,:));
+
+[mod_stim_consump_alone_no_p,       mod_stim_consump_alone_no_h]       = ranksum(mod_stim_consump_le_mo(19,:), mod_stim_consump_le_mo(20,:));
+[mod_stim_consump_alone_yes_more_p, mod_stim_consump_alone_yes_more_h] = ranksum(mod_stim_consump_le_mo(21,:), mod_stim_consump_le_mo(22,:));
+[mod_stim_consump_alone_yes_less_p, mod_stim_consump_alone_yes_less_h] = ranksum(mod_stim_consump_le_mo(23,:), mod_stim_consump_le_mo(24,:));
 % ========================================================================= mod_stim_consump_le_mo
 
 
