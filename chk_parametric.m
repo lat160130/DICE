@@ -27,15 +27,17 @@ end % if size(data,1) < 5
 
 % == Input Variables ====================================================== Input Variable
 % data - read in a matrix.  Each column MUST be an independent dataset.
-% 0 entry in the matrix means the condition was met.  
-% 1 means the condition was not met.
 % alpha - scalar
 % ========================================================================= Input Variable
 
 % == Output Matrix ======================================================== Output Matrix
 % This function returns a matrix.  It will say return which conditions
 % were violated for each input matrix. 
+% 0 entry in the matrix means the condition was met.  
+% 1 means the condition was not met.
 % ========================================================================= Output Matrix
+
+
 
 % == Setup ================================================================ Setup
 % Rows are the assumption, columns are the index of the matrix entered.
