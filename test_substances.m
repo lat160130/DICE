@@ -182,37 +182,62 @@ bang_alone_param_check = chk_parametric([bang_alone,bang_two_more], alpha);
 % ========================================================================= bang_7days_mm
 
 
-% == mod_alc_consump_le_mo ================================================ mod_alc_consump_le_mo
-mod_alc_param_check_sex   = chk_parametric(mod_alc_consump_le_mo(9:14,:)', alpha);
-mod_alc_param_check_alone = chk_parametric(mod_alc_consump_le_mo(19:24,:)', alpha);
-% both parametric
+% % == mod_alc_consump_le_mo ================================================ mod_alc_consump_le_mo
+% mod_alc_param_check_sex   = chk_parametric(mod_alc_consump_le_mo(9:14,:)', alpha);
+% mod_alc_param_check_alone = chk_parametric(mod_alc_consump_le_mo(19:24,:)', alpha);
+% % both parametric
+% 
+% mod_alc_consump_reg = fitlm(mod_alc_consump_le_mo(1,:), mod_alc_consump_le_mo(2,:)./mod_alc_consump_le_mo(5,:), 'linear');
+% 
+% [mod_alc_consump_sex_no_p,       mod_alc_consump_sex_no_h]       = ranksum(mod_alc_consump_le_mo(9,:), mod_alc_consump_le_mo(10,:));
+% [mod_alc_consump_sex_yes_more_p, mod_alc_consump_sex_yes_more_h] = ranksum(mod_alc_consump_le_mo(11,:), mod_alc_consump_le_mo(12,:));
+% [mod_alc_consump_sex_yes_less_p, mod_alc_consump_sex_yes_less_h] = ranksum(mod_alc_consump_le_mo(13,:), mod_alc_consump_le_mo(14,:));
+% 
+% [mod_alc_consump_alone_no_p,       mod_alc_consump_alone_no_h]       = ranksum(mod_alc_consump_le_mo(19,:), mod_alc_consump_le_mo(20,:));
+% [mod_alc_consump_alone_yes_more_p, mod_alc_consump_alone_yes_more_h] = ranksum(mod_alc_consump_le_mo(21,:), mod_alc_consump_le_mo(22,:));
+% [mod_alc_consump_alone_yes_less_p, mod_alc_consump_alone_yes_less_h] = ranksum(mod_alc_consump_le_mo(23,:), mod_alc_consump_le_mo(24,:));
+% % ========================================================================= mod_alc_consump_le_mo
+% 
+% % == mod_stim_consump_le_mo =============================================== mod_stim_consump_le_mo
+% 
+% mod_stim_sex_param_check   = chk_parametric(mod_stim_consump_le_mo(9:14,:)',alpha);
+% mod_stim_alone_param_check = chk_parametric(mod_stim_consump_le_mo(19:24,:)',alpha);
+% % % all are non parametric
+% 
+% mod_stim_reg = fitlm(mod_stim_consump_le_mo(1,:), mod_stim_consump_le_mo(2,:)./mod_stim_consump_le_mo(5,:), 'linear');
+% 
+% [mod_stim_consump_sex_no_p,       mod_stim_consump_sex_no_h]       = ranksum(mod_stim_consump_le_mo(9,:),  mod_stim_consump_le_mo(10,:));
+% [mod_stim_consump_sex_yes_more_p, mod_stim_consump_sex_yes_more_h] = ranksum(mod_stim_consump_le_mo(11,:), mod_stim_consump_le_mo(12,:));
+% [mod_stim_consump_sex_yes_less_p, mod_stim_consump_sex_yes_less_h] = ranksum(mod_stim_consump_le_mo(13,:), mod_stim_consump_le_mo(14,:));
+% 
+% [mod_stim_consump_alone_no_p,       mod_stim_consump_alone_no_h]       = ranksum(mod_stim_consump_le_mo(19,:), mod_stim_consump_le_mo(20,:));
+% [mod_stim_consump_alone_yes_more_p, mod_stim_consump_alone_yes_more_h] = ranksum(mod_stim_consump_le_mo(21,:), mod_stim_consump_le_mo(22,:));
+% [mod_stim_consump_alone_yes_less_p, mod_stim_consump_alone_yes_less_h] = ranksum(mod_stim_consump_le_mo(23,:), mod_stim_consump_le_mo(24,:));
+% % ========================================================================= mod_stim_consump_le_mo
 
-mod_alc_consump_reg = fitlm(mod_alc_consump_le_mo(1,:), mod_alc_consump_le_mo(2,:)./mod_alc_consump_le_mo(5,:), 'linear');
 
-[mod_alc_consump_sex_no_p,       mod_alc_consump_sex_no_h]       = ranksum(mod_alc_consump_le_mo(9,:), mod_alc_consump_le_mo(10,:));
-[mod_alc_consump_sex_yes_more_p, mod_alc_consump_sex_yes_more_h] = ranksum(mod_alc_consump_le_mo(11,:), mod_alc_consump_le_mo(12,:));
-[mod_alc_consump_sex_yes_less_p, mod_alc_consump_sex_yes_less_h] = ranksum(mod_alc_consump_le_mo(13,:), mod_alc_consump_le_mo(14,:));
+% == Build Output matrix with results ===================================== Output with Results
+r2    =  [beer_reg.Rsquared.Ordinary;   wine_reg.Rsquared.Ordinary; liquor_reg.Rsquared.Ordinary; ...
+          coffee_reg.Rsquared.Ordinary; tea_reg.Rsquared.Ordinary;  bang_reg.Rsquared.Ordinary];
+      
+slope = [beer_reg.Coefficients.Estimate(2);   wine_reg.Coefficients.Estimate(2); liquor_reg.Coefficients.Estimate(2); ...
+          coffee_reg.Coefficients.Estimate(2); tea_reg.Coefficients.Estimate(2);  bang_reg.Coefficients.Estimate(2)];
 
-[mod_alc_consump_alone_no_p,       mod_alc_consump_alone_no_h]       = ranksum(mod_alc_consump_le_mo(19,:), mod_alc_consump_le_mo(20,:));
-[mod_alc_consump_alone_yes_more_p, mod_alc_consump_alone_yes_more_h] = ranksum(mod_alc_consump_le_mo(21,:), mod_alc_consump_le_mo(22,:));
-[mod_alc_consump_alone_yes_less_p, mod_alc_consump_alone_yes_less_h] = ranksum(mod_alc_consump_le_mo(23,:), mod_alc_consump_le_mo(24,:));
-% ========================================================================= mod_alc_consump_le_mo
+name  = {'beer_7days_mm';   'wine_7days_mm'; 'liquor_7days_mm'; ...
+         'coffee_7days_mm'; 'tea_7days_mm';  'bang_7days_mm'};
 
-% == mod_stim_consump_le_mo =============================================== mod_stim_consump_le_mo
+substances_sex   = [beer_sex_p, beer_sex_h;     wine_sex_p, wine_sex_h; liquor_sex_p, liquor_sex_h; ...
+                    coffee_sex_p, coffee_sex_h; tea_sex_p, tea_sex_h;   bang_sex_p, bang_sex_h];
+                
+substances_alone = [beer_alone_p, beer_alone_h;     wine_alone_p, wine_alone_h; liquor_alone_p, liquor_alone_h; ...
+                    coffee_alone_p, coffee_alone_h; tea_alone_p, tea_alone_h;   bang_alone_p, bang_alone_h];
 
-mod_stim_sex_param_check   = chk_parametric(mod_stim_consump_le_mo(9:14,:)',alpha);
-mod_stim_alone_param_check = chk_parametric(mod_stim_consump_le_mo(19:24,:)',alpha);
-% % all are non parametric
+TABLE_substances_lreg = table(name, r2, slope);
+TABLE_substances_sex_alone = table(name, substances_sex, substances_alone);
 
-mod_stim_reg = fitlm(mod_stim_consump_le_mo(1,:), mod_stim_consump_le_mo(2,:)./mod_stim_consump_le_mo(5,:), 'linear');
+% writetable(T,filename,'Sheet',1,'Range','D1')
+fileout = 'substances.xlsx';
+writetable(TABLE_substances_lreg, fileout, 'Sheet', 'lreg');
+writetable(TABLE_substances_sex_alone, fileout, 'Sheet', 'sex_alone');
 
-[mod_stim_consump_sex_no_p,       mod_stim_consump_sex_no_h]       = ranksum(mod_stim_consump_le_mo(9,:),  mod_stim_consump_le_mo(10,:));
-[mod_stim_consump_sex_yes_more_p, mod_stim_consump_sex_yes_more_h] = ranksum(mod_stim_consump_le_mo(11,:), mod_stim_consump_le_mo(12,:));
-[mod_stim_consump_sex_yes_less_p, mod_stim_consump_sex_yes_less_h] = ranksum(mod_stim_consump_le_mo(13,:), mod_stim_consump_le_mo(14,:));
-
-[mod_stim_consump_alone_no_p,       mod_stim_consump_alone_no_h]       = ranksum(mod_stim_consump_le_mo(19,:), mod_stim_consump_le_mo(20,:));
-[mod_stim_consump_alone_yes_more_p, mod_stim_consump_alone_yes_more_h] = ranksum(mod_stim_consump_le_mo(21,:), mod_stim_consump_le_mo(22,:));
-[mod_stim_consump_alone_yes_less_p, mod_stim_consump_alone_yes_less_h] = ranksum(mod_stim_consump_le_mo(23,:), mod_stim_consump_le_mo(24,:));
-% ========================================================================= mod_stim_consump_le_mo
-
-
+% ========================================================================= Output with Results

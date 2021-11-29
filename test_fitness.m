@@ -249,3 +249,56 @@ influ_exer_alone_no  = ranksum(influ_exer_ny(15,:), influ_exer_ny(16,:));
 influ_exer_alone_yes = ranksum(influ_exer_ny(17,:), influ_exer_ny(18,:));
 % ========================================================================= influ_exer_ny
 
+% == Build Output Matrix w/ Results ======================================= Results
+
+% Create R^2 table, we want R2 results and slope
+
+
+r2 = [vigpa_reg.Rsquared.Ordinary;   time_vpa_reg.Rsquared.Ordinary; modpa_reg.Rsquared.Ordinary; ...
+      walk_reg.Rsquared.Ordinary;    time_mpa_reg.Rsquared.Ordinary; time_walk_reg.Rsquared.Ordinary; ...
+      sitting_reg.Rsquared.Ordinary;];
+  % column 1 is the R^2 value, and column 2 is the slope
+  
+slope = [vigpa_reg.Coefficients.Estimate(2); time_vpa_reg.Coefficients.Estimate(2); modpa_reg.Coefficients.Estimate(2); ...
+         walk_reg.Coefficients.Estimate(2);     time_mpa_reg.Coefficients.Estimate(2); time_walk_reg.Coefficients.Estimate(2); ...
+         sitting_reg.Coefficients.Estimate(2);];
+     
+name_reg = {'vigpa_7days_mm'; 'time_vpa_mm'; 'modpa_7days_mm'; 'time_mpa_mm'; ...
+        'walk_7days_mm'; 'time_walk_mm'; 'sitting_7days_mm';};
+
+TABLE_fitness_lreg = table(name_reg, r2, slope);
+
+% Create table with p, h results for sex and alone
+
+fitness_sex   = [vigpa_sex_p, vigpa_sex_h;       time_vpa_sex_p, time_vpa_sex_h;  modpa_sex_p, modpa_sex_h; ...
+                 time_mpa_sex_p, time_mpa_sex_h; walk_sex_p, walk_sex_h;          time_walk_sex_p, time_walk_sex_h;
+                 sitting_sex_p, sitting_sex_h;];
+                 
+fitness_alone = [vigpa_alone_p, vigpa_alone_h;       time_vpa_alone_p, time_vpa_alone_h; modpa_alone_p, modpa_alone_h; ...
+                 time_mpa_alone_p, time_mpa_alone_h; walk_alone_p, walk_alone_h;         time_walk_alone_p, time_walk_alone_h; ...
+                 sitting_alone_p, sitting_alone_h;];
+TABLE_fitness_sex_alone = table(name_reg, fitness_sex, fitness_alone);
+
+% writetable(T,filename,'Sheet',1,'Range','D1')
+fileout = 'fitness.xlsx';
+writetable(TABLE_fitness_lreg, fileout, 'Sheet', 'lreg');
+writetable(TABLE_fitness_sex_alone, fileout, 'Sheet', 'sex_alone');
+
+                 
+% ========================================================================= Results
+
+% -- Extra ---------------------------------------------------------------- Extra
+% r2 = [vigpa_reg.Rsquared.Ordinary;   time_vpa_reg.Rsquared.Ordinary; modpa_reg.Rsquared.Ordinary; ...
+%       walk_reg.Rsquared.Ordinary;    time_mpa_reg.Rsquared.Ordinary; time_walk_reg.Rsquared.Ordinary; ...
+%       sitting_reg.Rsquared.Ordinary; pos_impact_reg.Rsquared.Ordinary; last7_reg.Rsquared.Ordinary; influ_exer_reg.Rsquared.Ordinary];
+%   % column 1 is the R^2 value, and column 2 is the slope
+%   
+% slope = [vigpa_reg.Coefficients.Estimate(2); time_vpa_reg.Coefficients.Estimate(2); modpa_reg.Coefficients.Estimate(2); ...
+%          walk_reg.Coefficients.Estimate(2);     time_mpa_reg.Coefficients.Estimate(2); time_walk_reg.Coefficients.Estimate(2); ...
+%          sitting_reg.Coefficients.Estimate(2); pos_impact_reg.Coefficients.Estimate(2); last7_reg.Coefficients.Estimate(2); influ_exer_reg.Coefficients.Estimate(2)];
+%      
+% name_reg = {'vigpa_7days_mm'; 'time_vpa_mm'; 'modpa_7days_mm'; 'time_mpa_mm'; ...
+%         'walk_7days_mm'; 'time_walk_mm'; 'sitting_7days_mm'; 'pos_impact_week_ny';...
+%         'last7_newactivities_ny'; 'influ_exer_ny' };
+% ------------------------------------------------------------------------- Extra
+
