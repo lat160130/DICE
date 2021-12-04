@@ -280,9 +280,9 @@ fitness_alone = [vigpa_alone_p, vigpa_alone_h;       time_vpa_alone_p, time_vpa_
 TABLE_fitness_sex_alone = table(name_reg, fitness_sex, fitness_alone);
 
 % writetable(T,filename,'Sheet',1,'Range','D1')
-fileout = 'fitness.xlsx';
-writetable(TABLE_fitness_lreg, fileout, 'Sheet', 'lreg');
-writetable(TABLE_fitness_sex_alone, fileout, 'Sheet', 'sex_alone');
+% fileout = 'fitness.xlsx';
+% writetable(TABLE_fitness_lreg, fileout, 'Sheet', 'lreg');
+% writetable(TABLE_fitness_sex_alone, fileout, 'Sheet', 'sex_alone');
 
                  
 % ========================================================================= Results
